@@ -1,1 +1,3 @@
-module URLChecker
+module urlchecker
+
+go 1.22.2
