@@ -1,6 +1,7 @@
 package urlchecker
 
 import (
+	"errors"
 	"fmt"
 	"net/http"
 	"regexp"
@@ -22,7 +23,7 @@ func checkUrlAvailability(url string) (bool, error) {
 	}
 	defer response.Body.Close()
 	if response.StatusCode != http.StatusOK {
-		return false, fmt.Errorf("%s returned status code %d", url, response.StatusCode)
+		return false, errors.New(fmt.Sprintf("%s returned status code %d", url, response.StatusCode))
 	}
 	return true, nil
 }
